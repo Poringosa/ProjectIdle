@@ -455,10 +455,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722b5fe8847b3444fb53b0e306a3298e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoTime: 1
   currentMoney: 0
   valuePerClick: 1
   upgradeOneValue: 1
   autoOneValue: 0
+  autoValue: 0
+  autoOnePrice: 0
 --- !u!4 &378455847
 Transform:
   m_ObjectHideFlags: 0
@@ -1037,6 +1040,9 @@ MonoBehaviour:
   upgradeValue: 1
   upgradeCount: 0
   currentValue: 0
+  startPrice: 10
+  priceMultiplicator: 2
+  currentPrice: 0
 --- !u!4 &1348507171
 Transform:
   m_ObjectHideFlags: 0
@@ -1415,6 +1421,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 378455846}
+        m_TargetAssemblyTypeName: MoneySession, Assembly-CSharp
+        m_MethodName: AutoBuy1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
       - m_Target: {fileID: 1348507170}
         m_TargetAssemblyTypeName: AutoUpgrade, Assembly-CSharp
         m_MethodName: AddValue

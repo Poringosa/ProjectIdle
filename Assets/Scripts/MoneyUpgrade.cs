@@ -38,7 +38,7 @@ public class MoneyUpgrade : MonoBehaviour
         }
 
     }
-
+    //Handing Values to other Objects
     public float GetUpgradeOne()
     {
         return currentUpgradeValue;

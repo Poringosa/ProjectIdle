@@ -6,12 +6,14 @@ public class MoneySession : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField] float autoTime = 1f;
+    [SerializeField] float tickTime = 1f;
     [Header("Debug")]
     [SerializeField] float currentMoney = 0;
     [SerializeField] float valuePerClick = 1;
     [SerializeField] float upgradeOneValue = 0;
     [SerializeField] float autoOneValue = 0;
     [SerializeField] float autoValue = 0;
+    [SerializeField] int autoOnePrice;
     MoneyUpgrade upgradeOne;
     AutoUpgrade autoOne;
 
@@ -20,7 +22,7 @@ public class MoneySession : MonoBehaviour
     {
         UpgradeCalc();
         AutoCalc();
-        InvokeRepeating("AutoAdding", 1F, 1F);
+        InvokeRepeating("AutoAdding", tickTime, tickTime);
 
     }
 
@@ -64,6 +66,12 @@ public class MoneySession : MonoBehaviour
     {
         autoOne = FindObjectOfType<AutoUpgrade>();
         autoOneValue = autoOne.GetAutoValue1();
+    }
+    public void PriceAutoOne()
+    {
+        autoOne = FindObjectOfType<AutoUpgrade>();
+        autoOnePrice = autoOne.GetPriceAuto1();
+        currentMoney = currentMoney - autoOnePrice;
     }
 
     // Giving Values to other Objects
