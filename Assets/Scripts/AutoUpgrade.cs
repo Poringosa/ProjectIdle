@@ -9,10 +9,9 @@ public class AutoUpgrade : MonoBehaviour
     [SerializeField] int startPrice = 10;
     [SerializeField] int priceMultiplicator = 2;
     [Header("Debug")]
-    [SerializeField] float upgradeCount = 0;
+    [SerializeField] int upgradeCount = 0;
     [SerializeField] float currentValue = 0;
     [SerializeField] int currentPrice;
-    [SerializeField] int priceCounter;
     
     float currentMoney;
     MoneySession moneyValue;
@@ -24,8 +23,7 @@ public class AutoUpgrade : MonoBehaviour
         PriceCalc();
         if (currentMoney >= currentPrice)
         {
-            moneyValue.PriceAutoOne(); //Suptrakting the money
-            priceCounter++;
+            moneyValue.PriceAutoOne(); //Paying the Price
             upgradeCount++;
             currentValue = upgradeValue * upgradeCount;
             PriceCalc();
@@ -38,7 +36,14 @@ public class AutoUpgrade : MonoBehaviour
 
     private void PriceCalc()
     {
-        currentPrice = startPrice * priceMultiplicator * (priceCounter + 1);
+        if (upgradeCount >= 1)
+        {
+            currentPrice = startPrice * priceMultiplicator * upgradeCount;
+        }
+        else
+        {
+            currentPrice = startPrice;
+        }
     }
     //Getting Values from other Objects
     private void CallMoneyValue()
